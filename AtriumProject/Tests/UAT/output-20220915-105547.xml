@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220915 10:55:54.379" rpa="false" schemaversion="3">
+<suite id="s1" name="Mainfile" source="\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot">
+<test id="s1-t1" name="User starts the test Suite" line="33">
+<kw name="Begin Web Test" library="Common" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>${Browser}</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20220915 10:56:36.484" level="INFO">{"browser": "chromium", "headless": false, "handleSIGINT": true, "handleSIGTERM": true, "handleSIGHUP": true, "timeout": 30000.0, "devtools": false, "slowMo": 0.0, "tracesDir": "\\\\atradiusnet.com\\dfs\\Homes\\CDF\\GBSNAN1\\My Documents\\code\\AtriumProject\\Tests\\UAT\\browser\\traces\\fa5f2ede-b8d9-413b-9964-22074ef7399e"}</msg>
+<msg timestamp="20220915 10:56:39.074" level="INFO">Starting Browser process C:\Users\gbsnan1\AppData\Local\Programs\Python\Python310\lib\site-packages\Browser\wrapper\index.js using port 1028</msg>
+<msg timestamp="20220915 10:56:48.473" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"handleSIGINT":true,"handleSIGTERM":true,"handleSIGHUP":true,"timeout":30000,"devtools":false,"slowMo":0,"tracesDir":"\\\\atradiusnet.com\\dfs\\Homes\\CDF\\GBSNAN1\\My Documents\\code\\AtriumProject\\Tests\\UAT\\browser\\traces\\fa5f2ede-b8d9-413b-9964-22074ef7399e"}</msg>
+<status status="PASS" starttime="20220915 10:56:36.484" endtime="20220915 10:56:48.473"/>
+</kw>
+<kw name="New Context" library="Browser">
+<arg>viewport={'width': 1600, 'height': 800}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<msg timestamp="20220915 10:56:48.473" level="INFO">{"acceptDownloads": true, "ignoreHTTPSErrors": false, "bypassCSP": false, "viewport": {"width": 1600, "height": 800}, "deviceScaleFactor": 1.0, "isMobile": false, "hasTouch": false, "javaScriptEnabled": true, "offline": false, "hideRfBrowser": false, "reducedMotion": "no-preference", "forcedColors": "none"}</msg>
+<msg timestamp="20220915 10:56:48.932" level="INFO">Successfully created context. </msg>
+<msg timestamp="20220915 10:56:48.932" level="INFO">{'acceptDownloads': True, 'ignoreHTTPSErrors': False, 'bypassCSP': False, 'viewport': {'width': 1600, 'height': 800}, 'deviceScaleFactor': 1, 'isMobile': False, 'hasTouch': False, 'javaScriptEnabled': True, 'offline': False, 'hideRfBrowser': False, 'reducedMotion': 'no-preference', 'forcedColors': 'none'}</msg>
+<status status="PASS" starttime="20220915 10:56:48.473" endtime="20220915 10:56:48.932"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${START URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20220915 10:56:52.359" level="INFO">Successfully initialized new page object and opened url: https://atrium-uat.atradius.com/</msg>
+<status status="PASS" starttime="20220915 10:56:48.932" endtime="20220915 10:56:52.359"/>
+</kw>
+<status status="PASS" starttime="20220915 10:56:36.484" endtime="20220915 10:56:52.359"/>
+</kw>
+<kw name="Run through Atrium" library="AtriumConnect">
+<kw name="Login Page" library="AtriumConnect">
+<kw name="sign in user with valid credentials" library="login">
+<kw name="Type Text" library="Browser">
+<arg>id=username</arg>
+<arg>${USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 10:56:52.359" level="INFO">Types the text 'GBGMHP3' in the given field.</msg>
+<status status="PASS" starttime="20220915 10:56:52.359" endtime="20220915 10:56:52.705"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=password</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 10:56:52.705" level="INFO">Types the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 10:56:52.705" endtime="20220915 10:56:53.201"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=login</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 10:56:53.201" endtime="20220915 10:56:53.843"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#header &gt; div &gt; div &gt; div &gt; div.header__logo.oj-sm-only-hide</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 10:58:03.838" level="WARN">Keyword 'Take Screenshot  fail-screenshot-{index}' could not be run on failure:
+Error: Tried to take screenshot, but no page was open.</msg>
+<msg timestamp="20220915 10:58:03.839" level="FAIL">Error: Could not find active page</msg>
+<status status="FAIL" starttime="20220915 10:56:53.843" endtime="20220915 10:58:03.893"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//body[1]/div[1]/div[2]/div[1]/main[1]/oj-module[3]/h2[1]/div[1]/div[1]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="NOT RUN" starttime="20220915 10:58:03.894" endtime="20220915 10:58:03.894"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//label[normalize-space()='Policy ID']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="NOT RUN" starttime="20220915 10:58:03.894" endtime="20220915 10:58:03.894"/>
+</kw>
+<status status="FAIL" starttime="20220915 10:56:52.359" endtime="20220915 10:58:03.894"/>
+</kw>
+<status status="FAIL" starttime="20220915 10:56:52.359" endtime="20220915 10:58:03.895"/>
+</kw>
+<kw name="Landing Page" library="AtriumConnect">
+<status status="NOT RUN" starttime="20220915 10:58:03.895" endtime="20220915 10:58:03.895"/>
+</kw>
+<status status="FAIL" starttime="20220915 10:56:52.359" endtime="20220915 10:58:03.895"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="Browser">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<msg timestamp="20220915 10:58:04.050" level="INFO">Closed browser</msg>
+<status status="PASS" starttime="20220915 10:58:03.896" endtime="20220915 10:58:04.051"/>
+</kw>
+<status status="PASS" starttime="20220915 10:58:03.896" endtime="20220915 10:58:04.051"/>
+</kw>
+<status status="FAIL" starttime="20220915 10:56:36.484" endtime="20220915 10:58:04.051">Error: Could not find active page</status>
+</test>
+<doc>Atrium User's walk through</doc>
+<status status="FAIL" starttime="20220915 10:55:57.066" endtime="20220915 10:58:04.052"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Mainfile">Mainfile</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220915 10:56:12.195" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:12.195" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:12.204" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\PO\login.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 32: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 10:56:14.581" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:14.581" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:14.581" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\Common.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 32: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 10:56:26.861" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:26.861" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:26.865" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\PO\landing.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 32: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 10:56:28.938" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:28.938" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 10:56:28.938" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\AtriumConnect.robot' on line 6: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 32: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 10:58:03.838" level="WARN">Keyword 'Take Screenshot  fail-screenshot-{index}' could not be run on failure:
+Error: Tried to take screenshot, but no page was open.</msg>
+</errors>
+</robot>

@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220915 09:49:45.860" rpa="false" schemaversion="3">
+<suite id="s1" name="Mainfile" source="\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot">
+<test id="s1-t1" name="User starts the test Suite" line="34">
+<kw name="Begin Web Test" library="Common" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>${Browser}</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20220915 09:49:46.966" level="INFO">{"browser": "chromium", "headless": false, "handleSIGINT": true, "handleSIGTERM": true, "handleSIGHUP": true, "timeout": 30000.0, "devtools": false, "slowMo": 0.0, "tracesDir": "\\\\atradiusnet.com\\dfs\\Homes\\CDF\\GBSNAN1\\My Documents\\code\\AtriumProject\\Tests\\UAT\\browser\\traces\\3b36b95b-da5d-49b7-85d7-c6cdc74dfc86"}</msg>
+<msg timestamp="20220915 09:49:47.028" level="INFO">Starting Browser process C:\Users\gbsnan1\AppData\Local\Programs\Python\Python310\lib\site-packages\Browser\wrapper\index.js using port 16551</msg>
+<msg timestamp="20220915 09:49:48.144" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"handleSIGINT":true,"handleSIGTERM":true,"handleSIGHUP":true,"timeout":30000,"devtools":false,"slowMo":0,"tracesDir":"\\\\atradiusnet.com\\dfs\\Homes\\CDF\\GBSNAN1\\My Documents\\code\\AtriumProject\\Tests\\UAT\\browser\\traces\\3b36b95b-da5d-49b7-85d7-c6cdc74dfc86"}</msg>
+<status status="PASS" starttime="20220915 09:49:46.966" endtime="20220915 09:49:48.144"/>
+</kw>
+<kw name="New Context" library="Browser">
+<arg>viewport={'width': 1600, 'height': 800}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<msg timestamp="20220915 09:49:48.144" level="INFO">{"acceptDownloads": true, "ignoreHTTPSErrors": false, "bypassCSP": false, "viewport": {"width": 1600, "height": 800}, "deviceScaleFactor": 1.0, "isMobile": false, "hasTouch": false, "javaScriptEnabled": true, "offline": false, "hideRfBrowser": false, "reducedMotion": "no-preference", "forcedColors": "none"}</msg>
+<msg timestamp="20220915 09:49:48.176" level="INFO">Successfully created context. </msg>
+<msg timestamp="20220915 09:49:48.176" level="INFO">{'acceptDownloads': True, 'ignoreHTTPSErrors': False, 'bypassCSP': False, 'viewport': {'width': 1600, 'height': 800}, 'deviceScaleFactor': 1, 'isMobile': False, 'hasTouch': False, 'javaScriptEnabled': True, 'offline': False, 'hideRfBrowser': False, 'reducedMotion': 'no-preference', 'forcedColors': 'none'}</msg>
+<status status="PASS" starttime="20220915 09:49:48.144" endtime="20220915 09:49:48.176"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${START URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20220915 09:49:49.151" level="INFO">Successfully initialized new page object and opened url: https://atrium-uat.atradius.com/</msg>
+<status status="PASS" starttime="20220915 09:49:48.176" endtime="20220915 09:49:49.151"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:46.965" endtime="20220915 09:49:49.151"/>
+</kw>
+<kw name="Run through Atrium" library="AtriumConnect">
+<kw name="Login Page" library="AtriumConnect">
+<kw name="sign in user with invalid credentials" library="login">
+<kw name="Type Text" library="Browser">
+<arg>id=username</arg>
+<arg>${USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:49.153" level="INFO">Types the text 'GBGMHP3' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:49.153" endtime="20220915 09:49:49.218"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=password</arg>
+<arg>${WRONG PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:49.218" level="INFO">Types the text 'Wrongpassword' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:49.218" endtime="20220915 09:49:49.254"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=login</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:49.254" endtime="20220915 09:49:49.448"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='error_message']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:49.574" level="INFO">Waited for Element with selector xpath=//div[@class='error_message'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:49.448" endtime="20220915 09:49:49.575"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:49.153" endtime="20220915 09:49:49.575"/>
+</kw>
+<kw name="sign in user with one letter invalid credentials" library="login">
+<kw name="Type Text" library="Browser">
+<arg>id=username</arg>
+<arg>${USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:49.576" level="INFO">Types the text 'GBGMHP3' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:49.576" endtime="20220915 09:49:49.610"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=password</arg>
+<arg>${WRONG PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:49.610" level="INFO">Types the text 'Wrongpassword' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:49.610" endtime="20220915 09:49:49.644"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=login</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:49.644" endtime="20220915 09:49:49.830"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='error_message']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:49.879" level="INFO">Waited for Element with selector xpath=//div[@class='error_message'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:49.830" endtime="20220915 09:49:49.879"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:49.575" endtime="20220915 09:49:49.879"/>
+</kw>
+<kw name="Forgot password" library="login">
+<kw name="Click" library="Browser">
+<arg>css=a[href='../atr-identity/faces/ForgotPassword?resource_url=https%3A%2F%2Fatrium-uat.atradius.com%2F']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:49.879" endtime="20220915 09:49:50.155"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//span[@class='catalanaBold title']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:50.473" level="INFO">Waited for Element with selector xpath=//span[@class='catalanaBold title'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:50.155" endtime="20220915 09:49:50.473"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:0:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:50.473" endtime="20220915 09:49:50.844"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>id=pt1:r1:0:pt1:it1::content</arg>
+<arg>${WRONG USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:50.844" level="INFO">Fills the text 'GBHHUO9' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:50.844" endtime="20220915 09:49:50.864"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:0:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:50.865" endtime="20220915 09:49:50.915"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//div[contains(text(),'We are unable to reset the password. Please contac')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:51.089" level="INFO">Waited for Element with selector //div[contains(text(),'We are unable to reset the password. Please contac')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:50.915" endtime="20220915 09:49:51.089"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>id=pt1:r1:0:pt1:it1::content</arg>
+<arg>${USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.090" level="INFO">Fills the text 'GBGMHP3' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.090" endtime="20220915 09:49:51.117"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:0:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:51.118" endtime="20220915 09:49:51.161"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=div[id='pt1:r1:1:pt1:pgl2'] div:nth-child(1) span:nth-child(1)</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:51.422" level="INFO">Waited for Element with selector css=div[id='pt1:r1:1:pt1:pgl2'] div:nth-child(1) span:nth-child(1) at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:51.161" endtime="20220915 09:49:51.422"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:51.422" endtime="20220915 09:49:51.473"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>id=d1_msgDlg::tb</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:51.545" level="INFO">Waited for Element with selector id=d1_msgDlg::tb at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:51.474" endtime="20220915 09:49:51.545"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=div[id='d1_msgDlg_cancel'] a[role='button']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:51.545" endtime="20220915 09:49:51.610"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=div[id='pt1:r1:1:pt1:pgl2'] div:nth-child(1) span:nth-child(1)</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:51.623" level="INFO">Waited for Element with selector css=div[id='pt1:r1:1:pt1:pgl2'] div:nth-child(1) span:nth-child(1) at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:51.610" endtime="20220915 09:49:51.623"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it1::content']</arg>
+<arg>${SECURITY QUESTION1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.623" level="INFO">Fills the text 'GladStone Primary School' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.623" endtime="20220915 09:49:51.642"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it4::content']</arg>
+<arg>${PREV 13 PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.643" level="INFO">Fills the text 'ACBoffice101' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.642" endtime="20220915 09:49:51.664"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it5::content']</arg>
+<arg>${PREV 13 PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.664" level="INFO">Fills the text 'ACBoffice101' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.664" endtime="20220915 09:49:51.681"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:51.681" endtime="20220915 09:49:51.740"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='x15p']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:51.816" level="INFO">Waited for Element with selector xpath=//div[@class='x15p'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:51.740" endtime="20220915 09:49:51.816"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=d1_msgDlg::close</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:51.816" endtime="20220915 09:49:51.905"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it1::content']</arg>
+<arg>${SECURITY QUESTION1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.905" level="INFO">Fills the text 'GladStone Primary School' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.905" endtime="20220915 09:49:51.925"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it2::content']</arg>
+<arg>${SECURITY QUESTION2}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.926" level="INFO">Fills the text 'Audi A8 2022' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.926" endtime="20220915 09:49:51.963"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it3::content']</arg>
+<arg>${SECURITY QUESTION3}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.963" level="INFO">Fills the text 'Cardiff' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.963" endtime="20220915 09:49:51.980"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it4::content']</arg>
+<arg>${PREV 13 PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:51.981" level="INFO">Fills the text 'ACBoffice101' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:51.980" endtime="20220915 09:49:52.001"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>xpath=//input[@id='pt1:r1:1:pt1:it5::content']</arg>
+<arg>${PREV 13 PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:52.001" level="INFO">Fills the text 'ACBoffice101' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:52.001" endtime="20220915 09:49:52.020"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.020" endtime="20220915 09:49:52.075"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='x15p']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:52.146" level="INFO">Waited for Element with selector xpath=//div[@class='x15p'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:52.075" endtime="20220915 09:49:52.146"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=d1_msgDlg::close</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.146" endtime="20220915 09:49:52.208"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${PREV 13 PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:52.208" level="INFO">Types the text 'ACBoffice101' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:52.208" endtime="20220915 09:49:52.249"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${UNMATCHED PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:52.249" level="INFO">Types the text 'Cardiff555' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:52.249" endtime="20220915 09:49:52.286"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.286" endtime="20220915 09:49:52.342"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='x15p']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:52.413" level="INFO">Waited for Element with selector xpath=//div[@class='x15p'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:52.342" endtime="20220915 09:49:52.413"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=d1_msgDlg::close</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.413" endtime="20220915 09:49:52.517"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${NUM ERR PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:52.519" level="INFO">Types the text 'Cardiffgg' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:52.518" endtime="20220915 09:49:52.566"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${NUM ERR PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:52.567" level="INFO">Types the text 'Cardiffgg' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:52.566" endtime="20220915 09:49:52.600"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.600" endtime="20220915 09:49:52.659"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[@class='x15p']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:52.748" level="INFO">Waited for Element with selector xpath=//div[@class='x15p'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:52.659" endtime="20220915 09:49:52.748"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>xpath=//body[1]/div[2]/form[1]/div[2]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/table[1]/tbody[1]/tr[3]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/a[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:52.748" endtime="20220915 09:49:53.130"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${NO UPPCASE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:53.131" level="INFO">Types the text 'cardiff007' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:53.130" endtime="20220915 09:49:53.170"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${NO UPPCASE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:53.171" level="INFO">Types the text 'cardiff007' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:53.170" endtime="20220915 09:49:53.207"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:53.207" endtime="20220915 09:49:53.259"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[contains(text(),'Password must contain at least 1 uppercase letter(')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:53.332" level="INFO">Waited for Element with selector xpath=//div[contains(text(),'Password must contain at least 1 uppercase letter(')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:53.259" endtime="20220915 09:49:53.332"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>xpath=//body[1]/div[2]/form[1]/div[2]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/table[1]/tbody[1]/tr[3]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/a[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:53.332" endtime="20220915 09:49:53.742"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${UNMATCHED PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:53.743" level="INFO">Types the text 'Cardiff555' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:53.743" endtime="20220915 09:49:53.787"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${UNMATCHED PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:53.790" level="INFO">Types the text 'Cardiff555' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:53.787" endtime="20220915 09:49:53.826"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:53.826" endtime="20220915 09:49:53.879"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[contains(text(),'Any particular character in the password must not ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:53.950" level="INFO">Waited for Element with selector xpath=//div[contains(text(),'Any particular character in the password must not ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:53.879" endtime="20220915 09:49:53.950"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>xpath=//body[1]/div[2]/form[1]/div[2]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/table[1]/tbody[1]/tr[3]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/a[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:53.950" endtime="20220915 09:49:54.332"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${REPEAT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:54.333" level="INFO">Types the text 'Cardiff22211' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:54.332" endtime="20220915 09:49:54.373"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${REPEAT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:54.374" level="INFO">Types the text 'Cardiff22211' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:54.374" endtime="20220915 09:49:54.417"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:54.417" endtime="20220915 09:49:54.464"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//div[contains(text(),'Any particular character in the password must not ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:49:54.552" level="INFO">Waited for Element with selector xpath=//div[contains(text(),'Any particular character in the password must not ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:54.464" endtime="20220915 09:49:54.552"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>xpath=//body[1]/div[2]/form[1]/div[2]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/table[1]/tbody[1]/tr[3]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/a[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:54.552" endtime="20220915 09:49:54.928"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it4::content</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:54.929" level="INFO">Types the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:54.928" endtime="20220915 09:49:55.000"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=pt1:r1:1:pt1:it5::content</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:49:55.000" level="INFO">Types the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:49:55.000" endtime="20220915 09:49:55.042"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=pt1:r1:1:pt1:cb1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:49:55.042" endtime="20220915 09:49:55.097"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//*[@id="pt1:r1:2:pt1:pgl1"]/div[3]/span</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:07.879" level="INFO">Waited for Element with selector //*[@id="pt1:r1:2:pt1:pgl1"]/div[3]/span at state visible</msg>
+<status status="PASS" starttime="20220915 09:49:55.098" endtime="20220915 09:50:07.880"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>xpath=//*[@id='pt1:r1:2:pt1:gl1']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:07.880" endtime="20220915 09:50:08.170"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//body/div[@id='body']/div/div[3]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:08.250" level="INFO">Waited for Element with selector xpath=//body/div[@id='body']/div/div[3] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:08.170" endtime="20220915 09:50:08.250"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:49.879" endtime="20220915 09:50:08.251"/>
+</kw>
+<kw name="Language" library="login">
+<kw name="Click" library="Browser">
+<arg>css=#medium</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.251" endtime="20220915 09:50:08.329"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>de_DE</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.329" endtime="20220915 09:50:08.469"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:08.480" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:08.470" endtime="20220915 09:50:08.480"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>it_IT</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.481" endtime="20220915 09:50:08.656"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:08.666" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:08.656" endtime="20220915 09:50:08.668"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>nl_NL</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.668" endtime="20220915 09:50:08.793"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:08.806" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:08.793" endtime="20220915 09:50:08.806"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>pt_BR</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.807" endtime="20220915 09:50:08.959"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:08.971" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:08.960" endtime="20220915 09:50:08.971"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>zh_CN</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:08.971" endtime="20220915 09:50:09.181"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:09.192" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:09.181" endtime="20220915 09:50:09.192"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#medium</arg>
+<arg>value</arg>
+<arg>en_GB</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:09.192" endtime="20220915 09:50:09.316"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="body"]/div[2]/div[3]/div</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:09.327" level="INFO">Waited for Element with selector xpath=//*[@id="body"]/div[2]/div[3]/div at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:09.316" endtime="20220915 09:50:09.327"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:08.251" endtime="20220915 09:50:09.328"/>
+</kw>
+<kw name="Contact us" library="login">
+<kw name="Click" library="Browser">
+<arg>//a[@href='https://www.atradius.com/contactus/']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:09.328" endtime="20220915 09:50:09.378"/>
+</kw>
+<kw name="Go To" library="Browser">
+<arg>https://www.atradius.com/contactus</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<msg timestamp="20220915 09:50:10.030" level="INFO">Successfully opened URL https://www.atradius.com/contactus</msg>
+<status status="PASS" starttime="20220915 09:50:09.378" endtime="20220915 09:50:10.030"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>xpath=//*[@id="h1"]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:10.058" level="INFO">Waited for Element with selector xpath=//*[@id="h1"] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:10.030" endtime="20220915 09:50:10.058"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#showCST</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:10.058" endtime="20220915 09:50:11.852"/>
+</kw>
+<kw name="Go Back" library="Browser">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the previous page in history.</doc>
+<msg timestamp="20220915 09:50:11.875" level="INFO">Did Go Back</msg>
+<status status="PASS" starttime="20220915 09:50:11.852" endtime="20220915 09:50:11.875"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:09.328" endtime="20220915 09:50:11.875"/>
+</kw>
+<kw name="sign in user with valid credentials" library="login">
+<kw name="Type Text" library="Browser">
+<arg>id=username</arg>
+<arg>${USER ID}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:11.876" level="INFO">Types the text 'GBGMHP3' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:11.876" endtime="20220915 09:50:11.913"/>
+</kw>
+<kw name="Type Text" library="Browser">
+<arg>id=password</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:11.915" level="INFO">Types the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:11.913" endtime="20220915 09:50:11.946"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>id=login</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:11.946" endtime="20220915 09:50:12.374"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#header &gt; div &gt; div &gt; div &gt; div.header__logo.oj-sm-only-hide</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:15.314" level="INFO">Waited for Element with selector css=#header &gt; div &gt; div &gt; div &gt; div.header__logo.oj-sm-only-hide at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:12.375" endtime="20220915 09:50:15.315"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//body[1]/div[1]/div[2]/div[1]/main[1]/oj-module[3]/h2[1]/div[1]/div[1]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:15.440" level="INFO">Waited for Element with selector //body[1]/div[1]/div[2]/div[1]/main[1]/oj-module[3]/h2[1]/div[1]/div[1] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:15.315" endtime="20220915 09:50:15.440"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//label[normalize-space()='Policy ID']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:15.889" level="INFO">Waited for Element with selector //label[normalize-space()='Policy ID'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:15.440" endtime="20220915 09:50:15.889"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:11.876" endtime="20220915 09:50:15.889"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:49.152" endtime="20220915 09:50:15.889"/>
+</kw>
+<kw name="Landing Page" library="AtriumConnect">
+<kw name="account settings" library="landing">
+<kw name="Click" library="Browser">
+<arg>//body/div/div/oj-module[@config='[[headerConfig]]']/header[@role='banner']/div/div/oj-toolbar[@role='toolbar']/oj-menu-button[@chroming='half']/button/div[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:15.891" endtime="20220915 09:50:15.966"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>//span[normalize-space()='Account settings']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:15.966" endtime="20220915 09:50:16.155"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//h2[normalize-space()='Account Settings']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:16.574" level="INFO">Waited for Element with selector //h2[normalize-space()='Account Settings'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:16.155" endtime="20220915 09:50:16.574"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//a[normalize-space()='User profile']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:16.585" level="INFO">Waited for Element with selector //a[normalize-space()='User profile'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:16.574" endtime="20220915 09:50:16.585"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:15.891" endtime="20220915 09:50:16.586"/>
+</kw>
+<kw name="user profile" library="landing">
+<kw name="Click" library="Browser">
+<arg>//a[normalize-space()='User profile']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:16.586" endtime="20220915 09:50:16.637"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>//a[normalize-space()='User profile']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:16.654" level="INFO">Waited for Element with selector //a[normalize-space()='User profile'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:16.637" endtime="20220915 09:50:16.654"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:17.735" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:16.655" endtime="20220915 09:50:17.735"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:17.735" endtime="20220915 09:50:18.145"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'No details have been updated')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:18.258" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'No details have been updated')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:18.145" endtime="20220915 09:50:18.258"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it2::content"]</arg>
+<arg>${CHANGE EMAIL ADDRESS}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:18.258" level="INFO">Fills the text 'changeemail@atradius.com' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:18.258" endtime="20220915 09:50:18.286"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it3::content"]</arg>
+<arg>${CONFIRM WRONG EMAIL ADDRESS}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:18.287" level="INFO">Fills the text 'changeemail202@atradius.com' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:18.286" endtime="20220915 09:50:18.313"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:18.313" endtime="20220915 09:50:18.371"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'The email addresses do not match, please check and')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:18.473" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'The email addresses do not match, please check and')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:18.371" endtime="20220915 09:50:18.473"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it3::content"]</arg>
+<arg>${CHANGE EMAIL ADDRESS}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:18.474" level="INFO">Fills the text 'changeemail@atradius.com' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:18.474" endtime="20220915 09:50:18.496"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:18.497" endtime="20220915 09:50:18.558"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:23.525" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:18.558" endtime="20220915 09:50:23.525"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:23.525" endtime="20220915 09:50:23.605"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it4::content"]</arg>
+<arg>${WRONG PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:23.607" level="INFO">Fills the text 'Wrongpassword' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:23.605" endtime="20220915 09:50:23.634"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it13::content"]</arg>
+<arg>${CHANGE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:23.635" level="INFO">Fills the text 'ACBoffice201' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:23.635" endtime="20220915 09:50:23.656"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it5::content"]</arg>
+<arg>${CHANGE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:23.657" level="INFO">Fills the text 'ACBoffice201' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:23.656" endtime="20220915 09:50:23.679"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:23.679" endtime="20220915 09:50:23.734"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[normalize-space()='Error']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:23.886" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[normalize-space()='Error'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:23.734" endtime="20220915 09:50:23.886"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:23.910" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:23.886" endtime="20220915 09:50:23.911"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it4::content"]</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:23.911" level="INFO">Fills the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:23.911" endtime="20220915 09:50:24.012"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it13::content"]</arg>
+<arg>${CHANGE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:24.012" level="INFO">Fills the text 'ACBoffice201' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:24.012" endtime="20220915 09:50:24.041"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it5::content"]</arg>
+<arg>${WRONG PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:24.041" level="INFO">Fills the text 'Wrongpassword' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:24.041" endtime="20220915 09:50:24.063"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:24.063" endtime="20220915 09:50:24.118"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'The passwords do not match, please re-enter and su')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:24.241" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'The passwords do not match, please re-enter and su')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:24.118" endtime="20220915 09:50:24.242"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:24.290" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:24.242" endtime="20220915 09:50:24.291"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it4::content"]</arg>
+<arg>${SET CORRECT PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:24.291" level="INFO">Fills the text 'ACBoffice200' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:24.291" endtime="20220915 09:50:24.313"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it13::content"]</arg>
+<arg>${CHANGE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:24.314" level="INFO">Fills the text 'ACBoffice201' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:24.313" endtime="20220915 09:50:24.341"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it5::content"]</arg>
+<arg>${CHANGE PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:24.341" level="INFO">Fills the text 'ACBoffice201' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:24.341" endtime="20220915 09:50:24.365"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:24.365" endtime="20220915 09:50:24.416"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:38.161" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:24.416" endtime="20220915 09:50:38.161"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.161" endtime="20220915 09:50:38.291"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:soc1::content"]</arg>
+<arg>value</arg>
+<arg>2</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.291" endtime="20220915 09:50:38.330"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:soc2::content"]</arg>
+<arg>value</arg>
+<arg>4</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.331" endtime="20220915 09:50:38.364"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:soc3::content"]</arg>
+<arg>value</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.364" endtime="20220915 09:50:38.395"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it6::content"]</arg>
+<arg>Dog</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:38.395" level="INFO">Fills the text 'Dog' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:38.395" endtime="20220915 09:50:38.420"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it7::content"]</arg>
+<arg>Ben Stokes</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:38.420" level="INFO">Fills the text 'Ben Stokes' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:38.420" endtime="20220915 09:50:38.447"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it8::content"]</arg>
+<arg>George</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:38.447" level="INFO">Fills the text 'George' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:38.447" endtime="20220915 09:50:38.470"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.470" endtime="20220915 09:50:38.534"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:38.865" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:38.534" endtime="20220915 09:50:38.865"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.866" endtime="20220915 09:50:38.940"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it11::content"]</arg>
+<arg>${FIRST NAME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:38.941" level="INFO">Fills the text 'Annie' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:38.940" endtime="20220915 09:50:38.965"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="pt1:r1:0:it12::content"]</arg>
+<arg>${LAST NAME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:38.965" level="INFO">Fills the text 'Marie' in the given field.</msg>
+<status status="PASS" starttime="20220915 09:50:38.965" endtime="20220915 09:50:38.987"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:38.988" endtime="20220915 09:50:39.056"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:45.399" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your details have been updated')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:39.057" endtime="20220915 09:50:45.399"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //*[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:45.399" endtime="20220915 09:50:45.468"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${FIRST1 NAME}</var>
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //body[1]/div[2]/form[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[1]/div[1]/div[14]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[2]/td[2]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:45.493" level="INFO">${FIRST1 NAME} = Annie</msg>
+<status status="PASS" starttime="20220915 09:50:45.468" endtime="20220915 09:50:45.495"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<var>${LAST1 NAME}</var>
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //body[1]/div[2]/form[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[1]/div[1]/div[14]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[3]/td[2]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20220915 09:50:45.514" level="INFO">${LAST1 NAME} = Marie</msg>
+<status status="PASS" starttime="20220915 09:50:45.495" endtime="20220915 09:50:45.514"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${FIRST1 NAME}</var>
+<arg>${FIRST1 NAME}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220915 09:50:45.514" level="INFO">${FIRST1 NAME} = Annie</msg>
+<status status="PASS" starttime="20220915 09:50:45.514" endtime="20220915 09:50:45.514"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${LAST1 NAME}</var>
+<arg>${LAST1 NAME}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220915 09:50:45.514" level="INFO">${LAST1 NAME} = Marie</msg>
+<status status="PASS" starttime="20220915 09:50:45.514" endtime="20220915 09:50:45.514"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${FIRST NAME}</arg>
+<arg>${FIRST1 NAME}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220915 09:50:45.514" endtime="20220915 09:50:45.515"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${LAST NAME}</arg>
+<arg>${LAST1 NAME}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220915 09:50:45.515" endtime="20220915 09:50:45.515"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //select[@title='English']</arg>
+<arg>value</arg>
+<arg>1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:45.515" endtime="20220915 09:50:45.549"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:45.549" endtime="20220915 09:50:45.604"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:50.339" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:45.604" endtime="20220915 09:50:50.339"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; // *[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:50.339" endtime="20220915 09:50:50.431"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Persönliche Details']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:50.446" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Persönliche Details'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:50.431" endtime="20220915 09:50:50.446"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //select[@title='Deutsch']</arg>
+<arg>value</arg>
+<arg>4</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:50.447" endtime="20220915 09:50:50.482"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:50.482" endtime="20220915 09:50:50.547"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:55.356" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:50.547" endtime="20220915 09:50:55.357"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; // *[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:55.357" endtime="20220915 09:50:55.594"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Detalles personales']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:50:55.610" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Detalles personales'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:55.594" endtime="20220915 09:50:55.610"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //select[@title='Español']</arg>
+<arg>value</arg>
+<arg>11</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:55.610" endtime="20220915 09:50:55.639"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:50:55.639" endtime="20220915 09:50:55.692"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:00.253" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:50:55.692" endtime="20220915 09:51:00.254"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; // *[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:00.259" endtime="20220915 09:51:00.574"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[contains(text(),'Pytania zabezpieczające')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:00.588" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[contains(text(),'Pytania zabezpieczające')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:51:00.574" endtime="20220915 09:51:00.589"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //select[@title='Polski']</arg>
+<arg>value</arg>
+<arg>19</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:00.589" endtime="20220915 09:51:00.618"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:00.618" endtime="20220915 09:51:00.666"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:05.189" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:51:00.666" endtime="20220915 09:51:05.189"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; // *[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:05.189" endtime="20220915 09:51:05.449"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[contains(text(),'Kişisel Bilgiler')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:05.470" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[contains(text(),'Kişisel Bilgiler')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:51:05.449" endtime="20220915 09:51:05.470"/>
+</kw>
+<kw name="Select Options By" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //select[@title='Türkçe']</arg>
+<arg>value</arg>
+<arg>2</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:05.470" endtime="20220915 09:51:05.542"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //button[@onclick='this.focus();return false;']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:05.542" endtime="20220915 09:51:05.630"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')]</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:10.030" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //div[contains(text(),'Your preferred display language has been changed. ')] at state visible</msg>
+<status status="PASS" starttime="20220915 09:51:05.630" endtime="20220915 09:51:10.030"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; // *[@id="d1_msgDlg_cancel"]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20220915 09:51:10.030" endtime="20220915 09:51:10.097"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Personal Details']</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20220915 09:51:10.114" level="INFO">Waited for Element with selector css=#user-profile-iframe-container &gt; iframe &gt;&gt;&gt; //span[normalize-space()='Personal Details'] at state visible</msg>
+<status status="PASS" starttime="20220915 09:51:10.097" endtime="20220915 09:51:10.114"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:16.586" endtime="20220915 09:51:10.114"/>
+</kw>
+<status status="PASS" starttime="20220915 09:50:15.889" endtime="20220915 09:51:10.114"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:49.152" endtime="20220915 09:51:10.114"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="Browser">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<msg timestamp="20220915 09:51:10.443" level="INFO">Closed browser</msg>
+<status status="PASS" starttime="20220915 09:51:10.115" endtime="20220915 09:51:10.443"/>
+</kw>
+<status status="PASS" starttime="20220915 09:51:10.115" endtime="20220915 09:51:10.443"/>
+</kw>
+<status status="PASS" starttime="20220915 09:49:46.965" endtime="20220915 09:51:10.444"/>
+</test>
+<doc>Atrium User's walk through</doc>
+<status status="PASS" starttime="20220915 09:49:45.882" endtime="20220915 09:51:10.445"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Mainfile">Mainfile</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220915 09:49:46.299" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.299" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.313" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\PO\login.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 33: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 09:49:46.358" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.360" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.360" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\Common.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 33: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 09:49:46.731" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.731" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.747" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\PO\landing.robot' on line 4: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 33: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20220915 09:49:46.783" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 7: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.784" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 8: Setting 'Test Teardown' is not allowed in resource file.</msg>
+<msg timestamp="20220915 09:49:46.785" level="ERROR">Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Resources\AtriumConnect.robot' on line 6: Error in file '\\atradiusnet.com\dfs\Homes\CDF\GBSNAN1\My Documents\code\AtriumProject\Tests\mainfile.robot' on line 33: Resource file with 'Test Cases' section is invalid.</msg>
+</errors>
+</robot>
