@@ -1,13 +1,35 @@
 *** Settings ***
 Documentation    Atrium User SignIn
 Library   Browser   timeout=70s  auto_closing_level=MANUAL    #enable_presenter_mode=True  
-Resource    ../../Tests/mainfile.robot
+Library    DataDriver    datadriven.xlsx    sheet_name=Sheet1    dialect: str = Excel-EU 
 
+#Resource    ../Common.robot
+#Resource    ../AtriumConnect.robot
+#Resource    ../../Tests/mainfile.robot        #creating the error in terminal
+
+*** Variables ***
+${username}
+${password}
+${USER ID}
+${WRONG PASSWORD}
+${WRONG USER ID}
+${PREV 13 PASSWORD}
+${SECURITY QUESTION1}
+${SECURITY QUESTION2}
+${SECURITY QUESTION3}
+${UNMATCHED PASSWORD}
+${NUM ERR PASSWORD}
+${SET CORRECT PASSWORD}
+${NO UPPCASE PASSWORD}
+${REPEAT PASSWORD}
 
 *** Keywords ***
 sign in user with invalid credentials
-    Type Text   id=username     ${USER ID}  
-    Type Text   id=password     ${WRONG PASSWORD}
+    [Arguments]    ${username}    ${password}
+    #Type Text   id=username     ${USER ID}  
+    #Type Text   id=password     ${WRONG PASSWORD}
+    Type Text   ${USER ID}    ${username} 
+    Type Text   ${WRONG PASSWORD}    ${password}
     Click       id=login
     Wait For Elements State    xpath=//div[@class='error_message']
 
@@ -38,8 +60,8 @@ Forgot password
     
     #complete all answers
     Fill Text    xpath=//input[@id='pt1:r1:1:pt1:it1::content']    ${SECURITY QUESTION1}
-    Fill Text    xpath=//input[@id='pt1:r1:1:pt1:it4::content']    ${PREV 13 PASSWORD}
-    Fill Text    xpath=//input[@id='pt1:r1:1:pt1:it5::content']    ${PREV 13 PASSWORD}
+    Fill Text    //input[@id='pt1:r1:1:pt1:it4::content']    ${PREV 13 PASSWORD}
+    Fill Text    //input[@id='pt1:r1:1:pt1:it5::content']    ${PREV 13 PASSWORD}
     Click        id=pt1:r1:1:pt1:cb1
     Wait For Elements State    xpath=//div[@class='x15p']
     Click    id=d1_msgDlg::close
@@ -95,10 +117,13 @@ Forgot password
     Type Text    id=pt1:r1:1:pt1:it4::content    ${SET CORRECT PASSWORD}
     Type Text    id=pt1:r1:1:pt1:it5::content    ${SET CORRECT PASSWORD}
     Click        id=pt1:r1:1:pt1:cb1
-    Wait For Elements State    //*[@id="pt1:r1:2:pt1:pgl1"]/div[3]/span
+    Wait For Elements State    //span[@class='catalanaRegular']
+    #Wait For Elements State    //*[@id="pt1:r1:2:pt1:pgl1"]/div[3]/span
     #Click    //*[@id="pt1:r1:2:pt1:gl1"]    //a[@class='xgw']
     Click    xpath=//*[@id='pt1:r1:2:pt1:gl1']
-    Wait For Elements State    xpath=//body/div[@id='body']/div/div[3]
+    Wait For Elements State    //*[@id="body"]/div[2]/div[3]/div
+    #Wait For Elements State    //*[@id="pt1:r1:2:pt1:pgl1"]/div[1]/span
+    #Wait For Elements State    xpath=//body/div[@id='body']/div/div[3]
     #Image comparison
     #Wait For Elements State    id=d1_msgDlg::_ccntr
     #Click    id=d1_msgDlg::close
@@ -129,8 +154,8 @@ Contact us
     Go Back   
 
 sign in user with valid credentials
-    Type Text   id=username     ${USER ID}   
-    Type Text   id=password     ${SET CORRECT PASSWORD}  
+    Fill Secret   id=username     $USER_ID   
+    Type Secret   id=password     $SET CORRECT PASSWORD  
     Click       id=login
     Wait For Elements State    css=#header > div > div > div > div.header__logo.oj-sm-only-hide
     Wait For Elements State    //body[1]/div[1]/div[2]/div[1]/main[1]/oj-module[3]/h2[1]/div[1]/div[1]
